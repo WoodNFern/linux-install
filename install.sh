@@ -7,6 +7,23 @@
 # The contents of this script are derived from the installation guide provided
 # by https://wiki.archlinux.de/title/Anleitung_f%C3%BCr_Einsteiger
 #
+set -e
+
+echo "Welcome to WoodNFern's installation script for Arch-Linux!"
+echo
+echo "Before running this installation, you have to partition your harddrive 
+according to your needs and create the filesystems."
+echo 
+while true; do
+    read -p "Have these steps been made? (y/N) " yn
+    case ${yn} in
+        [Yy]* ) break;;
+        [Nn]* ) exit;;
+        * ) exit;;
+    esac
+done
+
+
 
 ## Use correct keyboard layout for my German laptop in case of user interaction
 echo "Loading keyboard layout '/usr/share/kbd/keymaps/i386/qwertz/de-mobii.map.gz'"
