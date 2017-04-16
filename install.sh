@@ -73,8 +73,10 @@ nano /etc/pacman.d/mirrorlist
 # package 'intel-ucode' is useful for machines running on intel chips
 # package 'wpa_supplicant' may be usefull to avoid WiFi problems during/after
 #	installation.
+# package 'dialog' is needed to be able to use 'wifi-menu' after reboot for 
+#	easier WiFi setup.
 echo "Installing basic packages..."
-pacstrap /mnt base base-devel wpa_supplicant intel-ucode
+pacstrap /mnt base base-devel wpa_supplicant dialog intel-ucode
 
 # Generate file system table
 echo "Generating file system table..."
