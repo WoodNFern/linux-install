@@ -89,6 +89,26 @@ echo "NOTE: If you have installed Arch-Linux on a SSD, it is advised to change
 the file system table to mount '/' with options 'rw,defaults,noatime,discard'
 and mount 'swap' with options 'defaults,noatime,discard'."
 echo
-echo "Installation is now complete."
+echo "Installation of the basic system is now complete. Don't exit the script yet."
 echo "Entering operating system environment..."
 arch-chroot /mnt/
+
+
+
+## Run system configuration next
+sh configure.sh
+
+## Install GRUB bootloader
+sh grub_install.sh
+
+
+
+echo "The installation is now finished. The system will now reboot."
+
+exit
+umount -R /mnt
+
+echo "Press 'Enter' to continue."
+read
+
+reboot
