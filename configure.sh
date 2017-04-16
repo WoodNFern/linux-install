@@ -41,6 +41,7 @@ line."
 echo "Press 'Enter' to continue."
 read
 nano /etc/locale.gen
+locale-gen
 
 # Create linux kernel 
 mkinitcpio -p linux
