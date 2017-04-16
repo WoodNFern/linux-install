@@ -92,23 +92,3 @@ echo
 echo "Installation of the basic system is now complete. Don't exit the script yet."
 echo "Entering operating system environment..."
 arch-chroot /mnt/
-
-
-
-## Run system configuration next
-sh configure.sh
-
-## Install GRUB bootloader
-sh grub_install.sh
-
-
-
-echo "The installation is now finished. The system will now reboot."
-
-exit
-umount -R /mnt
-
-echo "Press 'Enter' to continue."
-read
-
-reboot
