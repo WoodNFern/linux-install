@@ -17,6 +17,7 @@ echo "Adding a new user..."
 echo "Please enter the name of the user (small letters only)"
 read USERNAME
 useradd -m -g users -s /bin/bash ${USERNAME}
+passwd ${USERNAME}
 
 # Enable sudo
 echo "Enabling 'sudo' functionality..."
