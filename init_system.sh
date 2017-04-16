@@ -9,6 +9,9 @@
 #
 set -e
 
+# Reestablish network connection
+wifi-menu
+
 # Add a non-root user
 echo "Adding a new user..."
 echo "Please enter the name of the user (small letters only)"
