@@ -131,15 +131,3 @@ pacman -S alsa-utils
 pacman -S acpid
 sudo systemctl enable acpid
 sudo systemctl start acpid
-
-# Needed software
-sudo pacman -S firefox firefox-i18n-de \
-thunderbird thunderbird-i18n-de \
-libreoffice-still libreoffice-still-de \
-gimp \
-inkscape \
-vlc \
-texlive-most texlive-lang texmaker \
-brasero
-
-#yaourt -S exaile 
