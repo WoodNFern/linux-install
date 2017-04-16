@@ -74,7 +74,7 @@ echo "Installing touchpad driver..."
 pacman -S xf86-input-synaptics
 
 echo "Setting keymap..."
-localeectl set-x11-keymap de acer_laptop de_nodeadkeys
+localectl set-x11-keymap de acer_laptop de_nodeadkeys
 
 echo "Installing nice fonts..."
 pacman -S ttf-dejavu ttf-inconsolata ttf-liberation ttf-symbola terminus-font
