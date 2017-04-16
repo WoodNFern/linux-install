@@ -39,7 +39,7 @@ gpasswd -a ${USERNAME} power
 # Install  and enable additional services
 echo "Install and enable useful services..."
 echo
-pacman -S acpid ntp dbus avahi cups cronie
+pacman -S acpid ntp dbus avahi cups cronie networkmanager
 systemctl enable acpid
 systemctl enable ntpd
 systemctl enable avahi-daemon
