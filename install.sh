@@ -27,7 +27,7 @@ done
 
 ## Use correct keyboard layout for my German laptop in case of user interaction
 echo "Loading keyboard layout '/usr/share/kbd/keymaps/i386/qwertz/de-mobii.map.gz'"
-loadskeys /usr/share/kbd/keymaps/i386/qwertz/de-mobii.map.gz
+loadkeys /usr/share/kbd/keymaps/i386/qwertz/de-mobii.map.gz
 
 
 
