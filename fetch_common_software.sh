@@ -36,4 +36,4 @@ tar -xvzf yaourt.tar.gz
 cd yaourt
 makepkg -si
 
-#yaourt -S exaile 
+yaourt -S exaile 
