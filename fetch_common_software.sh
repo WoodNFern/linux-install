@@ -9,6 +9,7 @@ set -e
 # Needed software
 sudo pacman -S openssh \
 keepass \
+wget \
 firefox firefox-i18n-de \
 thunderbird thunderbird-i18n-de \
 libreoffice-still libreoffice-still-de \
