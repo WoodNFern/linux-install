@@ -94,7 +94,7 @@ pacstrap /mnt base base-devel wpa_supplicant dialog intel-ucode
 
 # Generate file system table
 echo "Generating file system table..."
-genfstab -p /mnt > /mnt/etc/fstab
+genfstab -Lp /mnt > /mnt/etc/fstab
 
 echo "The generated file system table looks as follows:"
 echo
