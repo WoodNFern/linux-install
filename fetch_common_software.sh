@@ -10,6 +10,7 @@ set -e
 sudo pacman -S openssh \
 keepass \
 wget \
+jdk8-openjdk \
 firefox firefox-i18n-de \
 thunderbird thunderbird-i18n-de \
 libreoffice-still libreoffice-still-de \
