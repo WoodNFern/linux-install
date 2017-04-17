@@ -19,4 +19,21 @@ vlc \
 texlive-most texlive-lang texmaker \
 brasero
 
+
+
+## Install 'yaourt' for AUR packages
+
+# Install 'package-query' (dependency of yaourt)
+curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
+tar -xvzf package-query.tar.gz
+cd package-query
+makepkg -si
+cd ..
+
+# Install 'yaourt'
+curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz
+tar -xvzf yaourt.tar.gz
+cd yaourt
+makepkg -si
+
 #yaourt -S exaile 
