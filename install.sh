@@ -25,6 +25,20 @@ done
 
 
 
+## Check for clutter on EFI partition /mnt/boot
+if [ -e "/mnt/boot/vmlinuz-linux" ] || [ -e "/mnt/boot/intel-ucode.img"]
+then
+	echo "Detected residue files from previous installations in your EFI
+		partition."
+	echo "These files will cause problems during the installation."
+	echo "Please remove the following files, if present:"
+	echo "/mnt/boot/vmlinuz-linux"
+	echo "/mnt/boot/intel-ucode.img"
+	echo "Exiting installation now. You may resume after these files have
+		been deleted."
+fi
+
+
 ## Use correct keyboard layout for my German laptop in case of user interaction
 echo "Loading keyboard layout '/usr/share/kbd/keymaps/i386/qwertz/de-mobii.map.gz'"
 loadkeys /usr/share/kbd/keymaps/i386/qwertz/de-mobii.map.gz
