@@ -8,6 +8,7 @@ set -e
 
 # Needed software
 sudo pacman -S openssh \
+rsync \
 keepass \
 wget \
 jdk8-openjdk \
