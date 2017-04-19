@@ -19,9 +19,14 @@ gimp \
 inkscape \
 vlc \
 texlive-most texlive-lang texmaker \
-brasero
+brasero \
+virtualbox
 
-
+# Add kernel module
+echo "Please enter your username to be able to use VirtualBox"
+read USERNAME
+sudo sh -c 'echo "vboxdrv" > /etc/modules-load.d/virtualbox.conf'
+sudo gpasswd -a ${USERNAME} vboxusers
 
 ## Install 'yaourt' for AUR packages
 
