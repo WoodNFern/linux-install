@@ -34,47 +34,56 @@ function configureZSH {
 	gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${GNOME_PROFILE_ID:1:-1}/ foreground-color ${TEXT_COLOR}
 }
 
-# Needed software
-sudo pacman -S zsh \
-openssh \
-rsync \
-sshfs \
-keepass \
-wget \
-jdk8-openjdk \
-firefox firefox-i18n-de \
-thunderbird thunderbird-i18n-de \
-libreoffice-still libreoffice-still-de \
-gimp \
-inkscape \
-vlc \
-texlive-most texlive-lang texmaker \
-brasero \
-virtualbox
-
-# Add kernel module
-echo "Please enter your username to be able to use VirtualBox"
-read USERNAME
-sudo sh -c 'echo "vboxdrv" > /etc/modules-load.d/virtualbox.conf'
-sudo sh -c 'echo "vboxnetadp" >> /etc/modules-load.d/virtualbox.conf'
-sudo sh -c 'echo "vboxnetflt" >> /etc/modules-load.d/virtualbox.conf'
-sudo gpasswd -a ${USERNAME} vboxusers
+## Set kernel modules needed for virtualbox to be started automatically
+function setAutorunVBoxKernelModules {
+	# Add kernel module
+	echo "Please enter your username to be able to use VirtualBox"
+	read USERNAME
+	sudo sh -c 'echo "vboxdrv" > /etc/modules-load.d/virtualbox.conf'
+	sudo sh -c 'echo "vboxnetadp" >> /etc/modules-load.d/virtualbox.conf'
+	sudo sh -c 'echo "vboxnetflt" >> /etc/modules-load.d/virtualbox.conf'
+	sudo gpasswd -a ${USERNAME} vboxusers
+}
 
 ## Install 'yaourt' for AUR packages
+function installAUR {
+	# Install 'package-query' (dependency of yaourt)
+	curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
+	tar -xvzf package-query.tar.gz
+	cd package-query
+	makepkg -si
+	cd ..
 
-# Install 'package-query' (dependency of yaourt)
-curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
-tar -xvzf package-query.tar.gz
-cd package-query
-makepkg -si
-cd ..
+	# Install 'yaourt'
+	curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz
+	tar -xvzf yaourt.tar.gz
+	cd yaourt
+	makepkg -si
+}
 
-# Install 'yaourt'
-curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz
-tar -xvzf yaourt.tar.gz
-cd yaourt
-makepkg -si
+## Install basic software packages for everyday use
+function installCommonPacmanPackages{
+	sudo pacman -S zsh \
+	openssh \
+	rsync \
+	sshfs \
+	keepass \
+	wget \
+	jdk8-openjdk \
+	firefox firefox-i18n-de \
+	thunderbird thunderbird-i18n-de \
+	libreoffice-still libreoffice-still-de \
+	gimp \
+	inkscape \
+	vlc \
+	texlive-most texlive-lang texmaker \
+	brasero \
+	virtualbox
+}
 
-yaourt -S exaile 
-
+installCommonPacmanPackages
 configureZSH
+setAutorunVBoxKernelModules
+installAUR
+
+yaourt -S exaile
