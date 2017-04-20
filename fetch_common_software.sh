@@ -24,6 +24,9 @@ texlive-most texlive-lang texmaker \
 brasero \
 virtualbox
 
+# Set zsh as default
+chsh -s /bin/zsh
+
 # Add kernel module
 echo "Please enter your username to be able to use VirtualBox"
 read USERNAME
