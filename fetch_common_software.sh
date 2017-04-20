@@ -7,7 +7,8 @@
 set -e
 
 # Needed software
-sudo pacman -S openssh \
+sudo pacman -S zsh \
+openssh \
 rsync \
 sshfs \
 keepass \
