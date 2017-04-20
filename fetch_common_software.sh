@@ -32,6 +32,9 @@ function configureZSH {
 	gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${GNOME_PROFILE_ID:1:-1}/ palette ${PALETTE}
 	gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${GNOME_PROFILE_ID:1:-1}/ background-color ${BACKGROUND_COLOR}
 	gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${GNOME_PROFILE_ID:1:-1}/ foreground-color ${TEXT_COLOR}
+
+	echo "Terminal colors have been set to theme 'solarized'"
+	echo "You may want to use 'agnoster' theme from 'Oh My ZSH!'. This can be configured in ~/.zshrc"
 }
 
 ## Set kernel modules needed for virtualbox to be started automatically
