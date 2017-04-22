@@ -14,10 +14,15 @@ function echoSeperator {
 
 ## Configure zsh (more info: https://wiki.gnome.org/Apps/Terminal/FAQ)
 function configureZSH {
-	#Install .oh-my-zsh
+	echoSeperator
+	echo "Installing 'OhMyZSH!'..."
+	echoSeperator
 	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 	# Set zsh as default
+	echoSeperator
+	echo "Setting 'zsh' as default shell..."
+	echoSeperator
 	chsh -s /bin/zsh
 
 	# Get profile ID of Gnome settings profile
@@ -34,6 +39,10 @@ function configureZSH {
 	#Terminal text color
 	TEXT_COLOR="'rgb(131,148,150)'"
 
+	echoSeperator
+	echo "Setting color theme for the terminal..."
+	echoSeperator
+
 	gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${GNOME_PROFILE_ID:1:-1}/ use-theme-colors false
 	gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${GNOME_PROFILE_ID:1:-1}/ palette "${PALETTE}"
 	gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${GNOME_PROFILE_ID:1:-1}/ background-color "${BACKGROUND_COLOR}"
@@ -45,25 +54,32 @@ function configureZSH {
 
 ## Set kernel modules needed for virtualbox to be started automatically
 function setAutorunVBoxKernelModules {
-	# Add kernel module
-	echo "Please enter your username to be able to use VirtualBox"
-	read USERNAME
+	# Add kernel module for virtualbox
+	echoSeperator
+	echo "Adding kernel modules for virtualbox"
+	echoSeperator
 	sudo sh -c 'echo "vboxdrv" > /etc/modules-load.d/virtualbox.conf'
 	sudo sh -c 'echo "vboxnetadp" >> /etc/modules-load.d/virtualbox.conf'
 	sudo sh -c 'echo "vboxnetflt" >> /etc/modules-load.d/virtualbox.conf'
+
+	read -p "Please enter your username to be able to use VirtualBox" USERNAME
 	sudo gpasswd -a ${USERNAME} vboxusers
 }
 
 ## Install 'yaourt' for AUR packages
 function installAUR {
-	# Install 'package-query' (dependency of yaourt)
+	echoSeperator
+	echo "Installing 'package-query' for yaourt..."
+	echoSeperator
 	curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
 	tar -xvzf package-query.tar.gz
 	cd package-query
 	makepkg -si
 	cd ..
 
-	# Install 'yaourt'
+	echoSeperator
+	echo "Installing 'yaourt'..."
+	echoSeperator
 	curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz
 	tar -xvzf yaourt.tar.gz
 	cd yaourt
@@ -72,6 +88,10 @@ function installAUR {
 
 ## Install basic software packages for everyday use
 function installCommonPacmanPackages {
+	echoSeperator
+	echo "Installing commonly used software..."
+	echoSeperator
+
 	sudo pacman -S --noconfirm zsh \
 	openssh \
 	rsync \
@@ -91,8 +111,18 @@ function installCommonPacmanPackages {
 }
 
 installCommonPacmanPackages
+
 configureZSH
+
 setAutorunVBoxKernelModules
+
 installAUR
 
+echoSeperator
+echo "Installing 'exaile' audio player..."
+echoSeperator
 yaourt -S exaile
+
+echoSeperator
+echo "Finished installing software!"
+echoSeperator
