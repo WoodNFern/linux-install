@@ -42,6 +42,7 @@ then
 	echo "/mnt/boot/intel-ucode.img"
 	echo "Exiting installation now. You may resume after these files have
 		been deleted."
+	exit
 fi
 
 
