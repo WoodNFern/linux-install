@@ -21,6 +21,7 @@ function echoSeperator {
 function detectGarbageBootFiles {
 	if [ -e "/mnt/boot/vmlinuz-linux" ] || [ -e "/mnt/boot/intel-ucode.img"]
 	then
+		echoSeperator
 		echo "Detected residue files from previous installations in your EFI
 			partition."
 		echo "These files will cause problems during the installation."
@@ -29,6 +30,7 @@ function detectGarbageBootFiles {
 		echo "/mnt/boot/intel-ucode.img"
 		echo "Exiting installation now. You may resume after these files have
 			been deleted."
+		echoSeperator
 		exit
 	fi
 }
@@ -36,6 +38,7 @@ function detectGarbageBootFiles {
 
 
 function printWelcomeMessage {
+	echoSeperator
 	echo "Welcome to WoodNFern's installation script for Arch-Linux!"
 	echo
 	echo "Before running this installation, you have to partition your harddrive
@@ -54,27 +57,32 @@ function printWelcomeMessage {
 
 
 function setupWifi {
-	## Setup WiFi
+	echoSeperator
 	echo "Setting up WiFi connection..."
 	echo
 	ip link
+	echoSeperator
 	echo "Which WiFi interface do you want to use?"
+	read -p "Name of the Wi-Fi adapter: " WIFI_ADAPTER
 	echo
-	read WIFI_ADAPTER
-
 	echo "What is the SSID of the network?"
+	read -p "Name (SSID) of the network: " SSID
 	echo
-	read SSID
-
 	echo "What is the password for the network?"
+	read -s -p "Password: " WIFI_PASSWORD
 	echo
-	read -s WIFI_PASSWORD
+	echo "Connecting..."
+	echoSeperator
 
 	# Use provided logins to connect to the network with the specified WiFi adapter.
 	# Selected device driver is 'wext' because of wider support.
 	wpa_passphrase ${SSID} ${WIFI_PASSWORD} > /etc/wpa_supplicant/wpa_supplicant.conf
 	wpa_supplicant -i ${WIFI_ADAPTER} -D wext -c /etc/wpa_supplicant/wpa_supplicant.conf -B
 	dhcpcd ${WIFI_ADAPTER}
+
+	echo
+	echo "Success!"
+	echo
 
 	# Alternatively 'wifi-menu' can be used
 	# wifi-menu
@@ -84,6 +92,11 @@ function setupWifi {
 
 # Select appropriate mirrors
 function setPacmanMirrors {
+
+	echoSeperator
+	echo "Looking for the fastest download mirrors for pacman..."
+	echo "(This may take a few minutes)"
+
 	# Backup
 	cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 
@@ -92,28 +105,32 @@ function setPacmanMirrors {
 
 	# Set 5 fastest mirrors automatically
 	rankmirrors -n 5 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist
+	echo "Done!"
 }
 
 
 
 # Install basic packages
 function installBasicPackages {
+	echoSeperator
+	echo "Installing basic packages..."
+
 	# package 'intel-ucode' is useful for machines running on intel chips
 	# package 'wpa_supplicant' may be usefull to avoid WiFi problems during/after
 	#	installation.
 	# package 'dialog' is needed to be able to use 'wifi-menu' after reboot for
 	#	easier WiFi setup.
-	echo "Installing basic packages..."
 	pacstrap /mnt base base-devel wpa_supplicant dialog intel-ucode
 
-	# Generate file system table
+	echoSeperator
 	echo "Generating file system table..."
 	genfstab -Up /mnt > /mnt/etc/fstab
 
+	echoSeperator
 	echo "The generated file system table looks as follows:"
 	echo
 	cat /mnt/etc/fstab
-	echo
+	echoSeperator
 
 	echo "NOTE: If you have installed Arch-Linux on a SSD, it is advised to change
 	the file system table to mount '/' with options 'rw,defaults,noatime,discard'
@@ -121,6 +138,9 @@ function installBasicPackages {
 	echo
 	echo "Installation of the basic system is now complete. Don't exit the script yet."
 	echo "Entering operating system environment..."
+	echo
+	echo "To continue the installation, run the script 'install_os_env.sh' next"
+	echoSeperator
 	arch-chroot /mnt/
 }
 
