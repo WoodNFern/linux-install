@@ -22,7 +22,7 @@ passwd ${USERNAME}
 # Enable sudo
 echo "Enabling 'sudo' functionality..."
 echo
-pacman -S --no-confirm sudo
+pacman -S --noconfirm sudo
 echo "Uncomment the line 'wheel ALL=(ALL) ALL' to enable sudo access for you"
 echo "Press 'Enter' to continue"
 read
@@ -39,7 +39,7 @@ gpasswd -a ${USERNAME} power
 # Install  and enable additional services
 echo "Install and enable useful services..."
 echo
-pacman -S --no-confirm acpid ntp dbus avahi cups cronie networkmanager
+pacman -S --noconfirm acpid ntp dbus avahi cups cronie networkmanager
 systemctl enable acpid
 systemctl enable ntpd
 systemctl enable avahi-daemon
@@ -50,7 +50,7 @@ systemctl enable cronie
 # Set up NTP
 echo "Installing NTP..."
 echo
-pacman -S --no-confirm ntp
+pacman -S --noconfirm ntp
 echo "You may now enter a different time server (e.g. de.pool.ntp.org)"
 echo "Press 'Enter' to continue"
 read
@@ -65,34 +65,34 @@ hwclock -w
 
 ## Install X and other components
 echo "Installing necessary X components"
-pacman -S --no-confirm xorg-server xorg-xinit xorg-utils xorg-server-utils
+pacman -S --noconfirm xorg-server xorg-xinit xorg-utils xorg-server-utils
 
 echo "Installing device driver for Intel chips..."
-pacman -S --no-confirm xf86-video-intel
+pacman -S --noconfirm xf86-video-intel
 
 echo "Installing touchpad driver..."
-pacman -S --no-confirm xf86-input-synaptics
+pacman -S --noconfirm xf86-input-synaptics
 
 echo "Setting keymap..."
 localectl set-x11-keymap de acer_laptop de_nodeadkeys
 
 echo "Installing nice fonts..."
-pacman -S --no-confirm ttf-dejavu ttf-inconsolata ttf-liberation ttf-symbola terminus-font
+pacman -S --noconfirm ttf-dejavu ttf-inconsolata ttf-liberation ttf-symbola terminus-font
 
 
 
 ## Install window manager
 
 function install_gnome {
-	pacman -S --no-confirm gnome gnome-extra
+	pacman -S --noconfirm gnome gnome-extra
 	echo "exec gnome-session" > ~/.xinitrc
 	systemctl enable gdm
 }
 
 function install_xfce4 {
-	pacman -S --no-confirm xfce4 xfce4-goodies human-icon-theme
+	pacman -S --noconfirm xfce4 xfce4-goodies human-icon-theme
 	echo "exec startxfce4" > ~/.xinitrc
-	pacman -S --no-confirm slim
+	pacman -S --noconfirm slim
 	#	It might happen that you need to uncomment the line
 	# 	'sessiondir /usr/share/xsessions/' in /etc/slim.conf
 	systemctl enable slim
@@ -121,13 +121,13 @@ done
 
 ## Install ALSA
 echo "Installing ALSA (Advanced Linux Sound Architecture)..."
-pacman -S --no-confirm alsa-utils
+pacman -S --noconfirm alsa-utils
 
 
 
 ## MISC
 
 # ACPI support for notebooks
-pacman -S acpid
+pacman -S --noconfirm acpid
 sudo systemctl enable acpid
 sudo systemctl start acpid
