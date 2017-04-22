@@ -76,12 +76,19 @@ dhcpcd ${WIFI_ADAPTER}
 echo "Installing the basic system"
 
 # Select appropriate mirrors
-cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+function setPacmanMirrors {
+	# Backup
+	cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+	
+	# Uncomment all entries
+	sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.bak
+	
+	# Set 5 fastest mirrors automatically
+	rankmirrors -n 5 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist
+}
 
-echo "Select the download mirrors you want to use with PACMAN."
-echo "Continue with 'Enter'"
-read
-nano /etc/pacman.d/mirrorlist
+setPacmanMirrors
+
 
 # Install basic packages
 # package 'intel-ucode' is useful for machines running on intel chips
