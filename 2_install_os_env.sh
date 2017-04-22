@@ -10,10 +10,10 @@
 set -e
 
 ## Run system configuration next
-sh configure.sh
+sh subscripts/configure.sh
 
 ## Install GRUB bootloader
-sh grub_install.sh
+sh subscripts/grub_install.sh
 
 
 
