@@ -22,11 +22,12 @@ sh subscripts/configure.sh
 sh subscripts/grub_install.sh
 
 
-
+echoSeperator
 echo "The installation is now finished. The system should reboot now."
 echo "Please run the following commands to reboot the system:"
 echo "umount -R /mnt"
 echo "reboot"
 echo "Exiting operating system environment..."
+echoSeperator
 exit
 
