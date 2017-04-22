@@ -19,13 +19,15 @@ function echoSeperator {
 
 function addSudoUser {
 	# Add a non-root user
+	echoSeperator
 	echo "Adding a new user..."
-	echo "Please enter the name of the user (small letters only)"
-	read USERNAME
+	echo
+	read -p "Please enter the name of the user (small letters only)" USERNAME
 	useradd -m -g users -s /bin/bash ${USERNAME}
 	passwd ${USERNAME}
 
 	# Enable sudo
+	echo
 	echo "Enabling 'sudo' functionality..."
 	echo
 	pacman -S --noconfirm sudo
@@ -38,14 +40,16 @@ function addSudoUser {
 	gpasswd -a ${USERNAME} video
 	gpasswd -a ${USERNAME} games
 	gpasswd -a ${USERNAME} power
+	echo
 }
 
 
 
 function installMiscServices {
 	# Install  and enable additional services
+	echoSeperator
 	echo "Install and enable useful services..."
-	echo
+	echoSeperator
 	pacman -S --noconfirm acpid ntp dbus avahi cups cronie networkmanager
 	systemctl enable acpid
 	systemctl enable ntpd
@@ -59,37 +63,49 @@ function installMiscServices {
 
 function setupNTP {
 	# Set up NTP
+	echoSeperator
 	echo "Installing NTP..."
 	echo
 	pacman -S --noconfirm ntp
-	echo "You may now enter a different time server (e.g. de.pool.ntp.org)"
-	echo "Press 'Enter' to continue"
-	read
+	echoSeperator
+	echo "Adding german NTP server to /etc/ntp.conf ..."
+	echo 'de.pool.ntp.org' | cat - /etc/ntp.conf > temp_file && mv temp_file /etc/ntp.conf
 	nano /etc/ntp.conf
 
 	ntpd -gq
+	echoSeperator
 	echo "The current time / date is:"
 	date
+	echoSeperator
 	hwclock -w
 }
 
 
 
 function installXorgComponents {
-	## Install X and other components
+	echoSeperator
 	echo "Installing necessary X components"
+	echoSeperator
 	pacman -S --noconfirm xorg-server xorg-xinit xorg-utils xorg-server-utils
 
+	echoSeperator
 	echo "Installing device driver for Intel chips..."
+	echoSeperator
 	pacman -S --noconfirm xf86-video-intel
 
+	echoSeperator
 	echo "Installing touchpad driver..."
+	echoSeperator
 	pacman -S --noconfirm xf86-input-synaptics
 
+	echoSeperator
 	echo "Setting keymap..."
+	echoSeperator
 	localectl set-x11-keymap de acer_laptop de_nodeadkeys
 
+	echoSeperator
 	echo "Installing nice fonts..."
+	echoSeperator
 	pacman -S --noconfirm ttf-dejavu ttf-inconsolata ttf-liberation ttf-symbola terminus-font
 }
 
@@ -111,6 +127,7 @@ function install_xfce4 {
 }
 
 function installWindowManager {
+	echoSeperator
 	PS3='Which window manager do you want to install? '
 	options=("GNOME" "Xfce4")
 	select opt in "${options[@]}"
@@ -118,11 +135,13 @@ function installWindowManager {
 	    case $opt in
 		"GNOME")
 		    echo "Installing GNOME..."
+		    		echoSeperator
 				install_gnome
 				break
 		    ;;
 		"Xfce4")
 		    echo "Installing Xfce4..."
+		    		echoSeperator
 				install_xfce4
 				break
 		    ;;
@@ -134,14 +153,22 @@ function installWindowManager {
 
 
 function installALSA {
+	echoSeperator
 	echo "Installing ALSA (Advanced Linux Sound Architecture)..."
+	echoSeperator
 	pacman -S --noconfirm alsa-utils
 }
 
 
 
 function installACPISupport {
+	echoSeperator
+	echo "Install ACPI support for notebooks"
+	echoSeperator
 	pacman -S --noconfirm acpid
+	echoSeperator
+	echo "Enabling ACPI service..."
+	echoSeperator
 	sudo systemctl enable acpid
 	sudo systemctl start acpid
 }
