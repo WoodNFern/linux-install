@@ -41,11 +41,11 @@ echo
 cat /etc/resolv.conf
 
 # Generate locales
-echo "Select the locales you want to generate with 'locale-gen'."
-echo "To select a locale, remove the '#' in the beginning of the corresponding
-line."
-echo "Press 'Enter' to continue."
-read
+echo "de_DE.UTF-8 UTF-8" >> /etc/locale.gen
+echo "de_DE ISO-8859-1" >> /etc/locale.gen
+echo "de_DE@euro ISO-8859-15" >> /etc/locale.gen
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+echo "en_US ISO-8859-1" >> /etc/locale.gen
 nano /etc/locale.gen
 locale-gen
 
