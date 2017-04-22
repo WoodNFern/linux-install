@@ -29,10 +29,7 @@ passwd ${USERNAME}
 echo "Enabling 'sudo' functionality..."
 echo
 pacman -S --noconfirm sudo
-echo "Uncomment the line 'wheel ALL=(ALL) ALL' to enable sudo access for you"
-echo "Press 'Enter' to continue"
-read
-nano /etc/sudoers
+echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 
 # Add user to important groups
 echo "Add user to important groups..."
