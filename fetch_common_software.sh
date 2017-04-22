@@ -29,9 +29,9 @@ function configureZSH {
 	TEXT_COLOR="'rgb(131,148,150)'"
 
 	gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${GNOME_PROFILE_ID:1:-1}/ use-theme-colors false
-	gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${GNOME_PROFILE_ID:1:-1}/ palette ${PALETTE}
-	gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${GNOME_PROFILE_ID:1:-1}/ background-color ${BACKGROUND_COLOR}
-	gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${GNOME_PROFILE_ID:1:-1}/ foreground-color ${TEXT_COLOR}
+	gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${GNOME_PROFILE_ID:1:-1}/ palette "${PALETTE}"
+	gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${GNOME_PROFILE_ID:1:-1}/ background-color "${BACKGROUND_COLOR}"
+	gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${GNOME_PROFILE_ID:1:-1}/ foreground-color "${TEXT_COLOR}"
 
 	echo "Terminal colors have been set to theme 'solarized'"
 	echo "You may want to use 'agnoster' theme from 'Oh My ZSH!'. This can be configured in ~/.zshrc"
@@ -65,7 +65,7 @@ function installAUR {
 }
 
 ## Install basic software packages for everyday use
-function installCommonPacmanPackages{
+function installCommonPacmanPackages {
 	sudo pacman -S zsh \
 	openssh \
 	rsync \
