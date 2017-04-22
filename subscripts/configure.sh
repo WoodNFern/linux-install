@@ -9,6 +9,12 @@
 #
 set -e
 
+function echoSeperator {
+	echo
+	echo "================================================================="
+	echo
+}
+
 # Set host name
 echo "Please enter the name of this computer:"
 read HOSTNAME

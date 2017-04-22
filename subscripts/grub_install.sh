@@ -1,3 +1,11 @@
+#!/usr/bin/env bash
+
+function echoSeperator {
+	echo
+	echo "================================================================="
+	echo
+}
+
 ## Install GRUB bootloader
 # Download and install GRUB
 echo "Installing GRUB bootloader..."

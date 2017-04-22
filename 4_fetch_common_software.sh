@@ -6,6 +6,12 @@
 #
 set -e
 
+function echoSeperator {
+	echo
+	echo "================================================================="
+	echo
+}
+
 ## Configure zsh (more info: https://wiki.gnome.org/Apps/Terminal/FAQ)
 function configureZSH {
 	#Install .oh-my-zsh

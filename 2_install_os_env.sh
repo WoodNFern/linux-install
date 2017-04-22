@@ -9,6 +9,12 @@
 #
 set -e
 
+function echoSeperator {
+	echo
+	echo "================================================================="
+	echo
+}
+
 ## Run system configuration next
 sh subscripts/configure.sh
 

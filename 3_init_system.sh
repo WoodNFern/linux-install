@@ -9,6 +9,12 @@
 #
 set -e
 
+function echoSeperator {
+	echo
+	echo "================================================================="
+	echo
+}
+
 # Reestablish network connection
 wifi-menu
 

@@ -9,6 +9,12 @@
 #
 set -e
 
+function echoSeperator {
+	echo
+	echo "================================================================="
+	echo
+}
+
 echo "Welcome to WoodNFern's installation script for Arch-Linux!"
 echo
 echo "Before running this installation, you have to partition your harddrive 
