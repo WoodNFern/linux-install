@@ -66,7 +66,7 @@ function installAUR {
 
 ## Install basic software packages for everyday use
 function installCommonPacmanPackages {
-	sudo pacman -S zsh \
+	sudo pacman -S --no-confirm zsh \
 	openssh \
 	rsync \
 	sshfs \
