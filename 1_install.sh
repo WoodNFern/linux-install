@@ -104,7 +104,7 @@ function setPacmanMirrors {
 	sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.bak
 
 	# Set 5 fastest mirrors automatically
-	rankmirrors -n 5 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist
+	rankmirrors -v -n 5 /etc/pacman.d/mirrorlist.bak | tee /dev/tty > /etc/pacman.d/mirrorlist
 	echo "Done!"
 }
 
