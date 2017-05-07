@@ -86,6 +86,13 @@ function installAUR {
 	makepkg -si
 }
 
+function installAurPackages {    
+    yaourt -S exaile
+    
+    gpg --recv-keys DB1187B9DD5F693B #Import GPG key of enigmail dev
+    yaourt -S thunderbird-enigmail
+}
+
 ## Install basic software packages for everyday use
 function installCommonPacmanPackages {
 	echoSeperator
@@ -120,10 +127,7 @@ setAutorunVBoxKernelModules
 
 installAUR
 
-echoSeperator
-echo "Installing 'exaile' audio player..."
-echoSeperator
-yaourt -S exaile
+installAurPackages
 
 echoSeperator
 echo "Finished installing software!"
