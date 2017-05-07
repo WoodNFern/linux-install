@@ -107,7 +107,9 @@ function installCommonPacmanPackages {
 	vlc \
 	texlive-most texlive-lang texmaker \
 	brasero \
-	virtualbox
+	virtualbox \
+	fortune \
+	cowsay
 }
 
 installCommonPacmanPackages
