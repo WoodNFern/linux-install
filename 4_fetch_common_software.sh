@@ -91,6 +91,8 @@ function installAurPackages {
     
     gpg --recv-keys DB1187B9DD5F693B #Import GPG key of enigmail dev
     yaourt -S thunderbird-enigmail
+    
+    yaourt -S android-studio
 }
 
 ## Install basic software packages for everyday use
