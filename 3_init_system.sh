@@ -86,7 +86,7 @@ function installXorgComponents {
 	echoSeperator
 	echo "Installing necessary X components"
 	echoSeperator
-	pacman -S --noconfirm xorg-server xorg-xinit xorg-utils xorg-server-utils
+	pacman -S --noconfirm xorg-server xorg-xinit
 
 	echoSeperator
 	echo "Installing device driver for Intel chips..."
