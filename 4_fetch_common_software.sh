@@ -117,7 +117,7 @@ function installCommonPacmanPackages {
 	texlive-most texlive-lang texmaker \
 	brasero \
 	virtualbox \
-	fortune \
+	fortune-mod \
 	cowsay
 }
 
