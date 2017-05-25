@@ -62,7 +62,7 @@ function setAutorunVBoxKernelModules {
 	sudo sh -c 'echo "vboxnetadp" >> /etc/modules-load.d/virtualbox.conf'
 	sudo sh -c 'echo "vboxnetflt" >> /etc/modules-load.d/virtualbox.conf'
 
-	read -p "Please enter your username to be able to use VirtualBox" USERNAME
+	read -p "Please enter your username to be able to use VirtualBox: " USERNAME
 	sudo gpasswd -a ${USERNAME} vboxusers
 }
 

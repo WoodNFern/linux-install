@@ -22,7 +22,7 @@ function addSudoUser {
 	echoSeperator
 	echo "Adding a new user..."
 	echo
-	read -p "Please enter the name of the user (small letters only)" USERNAME
+	read -p "Please enter the name of the user (small letters only) " USERNAME
 	useradd -m -g users -s /bin/bash ${USERNAME}
 	passwd ${USERNAME}
 
