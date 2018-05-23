@@ -94,6 +94,7 @@ function installAurPackages {
     
     yaourt -S android-studio
     yaourt -S icdiff					# Colorful, readable diff
+    yaourt -S masterpdfeditor				# Edit PDFs
 }
 
 ## Install basic software packages for everyday use
