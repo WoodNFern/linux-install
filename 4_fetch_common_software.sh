@@ -101,30 +101,39 @@ function installCommonPacmanPackages {
 	echo "Installing commonly used software..."
 	echoSeperator
 
+	# Basics
 	sudo pacman -S --noconfirm zsh
-	sudo pacman -S --noconfirm openssh
-	sudo pacman -S --noconfirm rsync
-	sudo pacman -S --noconfirm sshfs
-	sudo pacman -S --noconfirm keepass
-	sudo pacman -S --noconfirm wget
-	sudo pacman -S --noconfirm jdk8-openjdk
 	sudo pacman -S --noconfirm firefox
 	sudo pacman -S --noconfirm firefox-i18n-de
 	sudo pacman -S --noconfirm thunderbird
 	sudo pacman -S --noconfirm thunderbird-i18n-de
-	sudo pacman -S --noconfirm libreoffice-still
-	sudo pacman -S --noconfirm libreoffice-still-de
+	#sudo pacman -S --noconfirm virtualbox
+
+	# Media
 	sudo pacman -S --noconfirm gimp
 	sudo pacman -S --noconfirm inkscape
 	sudo pacman -S --noconfirm vlc
+	sudo pacman -S --noconfirm brasero               # Burning CD/DVD
+
+	# Development tools
+	sudo pacman -S --noconfirm jdk8-openjdk
+	sudo pacman -S --noconfirm wget
+	sudo pacman -S --noconfirm sshfs
+	sudo pacman -S --noconfirm openssh
+	sudo pacman -S --noconfirm rsync
+
+	# Productivity
+	sudo pacman -S --noconfirm ranger                # Terminal file manager
+	sudo pacman -S --noconfirm keepass               # Password manager
 	sudo pacman -S --noconfirm texlive-most
 	sudo pacman -S --noconfirm texlive-lang
 	sudo pacman -S --noconfirm texmaker
-	sudo pacman -S --noconfirm brasero
-	#sudo pacman -S --noconfirm virtualbox
-	sudo pacman -S --noconfirm fortune-mod
-	sudo pacman -S --noconfirm cowsay
-	sudo pacman -S --noconfirm ranger                # Terminal file manager
+	sudo pacman -S --noconfirm libreoffice-still
+	sudo pacman -S --noconfirm libreoffice-still-de
+
+	# Fun
+	sudo pacman -S --noconfirm fortune-mod           # fortune cookie generator
+	sudo pacman -S --noconfirm cowsay                # Wraps messages into a talking cow
 }
 
 installCommonPacmanPackages
