@@ -101,24 +101,30 @@ function installCommonPacmanPackages {
 	echo "Installing commonly used software..."
 	echoSeperator
 
-	sudo pacman -S --noconfirm zsh \
-	openssh \
-	rsync \
-	sshfs \
-	keepass \
-	wget \
-	jdk8-openjdk \
-	firefox firefox-i18n-de \
-	thunderbird thunderbird-i18n-de \
-	libreoffice-still libreoffice-still-de \
-	gimp \
-	inkscape \
-	vlc \
-	texlive-most texlive-lang texmaker \
-	brasero \
-	virtualbox \
-	fortune-mod \
-	cowsay
+	sudo pacman -S --noconfirm zsh
+	sudo pacman -S --noconfirm openssh
+	sudo pacman -S --noconfirm rsync
+	sudo pacman -S --noconfirm sshfs
+	sudo pacman -S --noconfirm keepass
+	sudo pacman -S --noconfirm wget
+	sudo pacman -S --noconfirm jdk8-openjdk
+	sudo pacman -S --noconfirm firefox
+	sudo pacman -S --noconfirm firefox-i18n-de
+	sudo pacman -S --noconfirm thunderbird
+	sudo pacman -S --noconfirm thunderbird-i18n-de
+	sudo pacman -S --noconfirm libreoffice-still
+	sudo pacman -S --noconfirm libreoffice-still-de
+	sudo pacman -S --noconfirm gimp
+	sudo pacman -S --noconfirm inkscape
+	sudo pacman -S --noconfirm vlc
+	sudo pacman -S --noconfirm texlive-most
+	sudo pacman -S --noconfirm texlive-lang
+	sudo pacman -S --noconfirm texmaker
+	sudo pacman -S --noconfirm brasero
+	#sudo pacman -S --noconfirm virtualbox
+	sudo pacman -S --noconfirm fortune-mod
+	sudo pacman -S --noconfirm cowsay
+	sudo pacman -S --noconfirm ranger                # Terminal file manager
 }
 
 installCommonPacmanPackages
