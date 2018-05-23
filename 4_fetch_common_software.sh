@@ -113,7 +113,7 @@ function installCommonPacmanPackages {
 	sudo pacman -S --noconfirm gimp
 	sudo pacman -S --noconfirm inkscape
 	sudo pacman -S --noconfirm vlc
-	sudo pacman -S --noconfirm brasero               # Burning CD/DVD
+	sudo pacman -S --noconfirm brasero              # Burning CD/DVD
 
 	# Development tools
 	sudo pacman -S --noconfirm jdk8-openjdk
@@ -121,10 +121,16 @@ function installCommonPacmanPackages {
 	sudo pacman -S --noconfirm sshfs
 	sudo pacman -S --noconfirm openssh
 	sudo pacman -S --noconfirm rsync
+	sudo pacman -S --noconfirm jq			# CLI JSON processor
+	sudo pacman -S --noconfirm httpie		# Good looking cURL wrapper
 
 	# Productivity
-	sudo pacman -S --noconfirm ranger                # Terminal file manager
-	sudo pacman -S --noconfirm keepass               # Password manager
+	sudo pacman -S --noconfirm ranger               # Terminal file manager
+	sudo pacman -S --noconfirm keepass              # Password manager
+	sudo pacman -S --noconfirm fd			# Human-friendly find
+	sudo pacman -S --noconfirm exa			# More informative 'ls' alternative
+	sudo pacman -S --noconfirm progress		# Show progress for running fs operations
+	sudo pacman -S --noconfirm ncdu			# 'graphical' disk usage analyzer
 	sudo pacman -S --noconfirm texlive-most
 	sudo pacman -S --noconfirm texlive-lang
 	sudo pacman -S --noconfirm texmaker
@@ -132,8 +138,8 @@ function installCommonPacmanPackages {
 	sudo pacman -S --noconfirm libreoffice-still-de
 
 	# Fun
-	sudo pacman -S --noconfirm fortune-mod           # fortune cookie generator
-	sudo pacman -S --noconfirm cowsay                # Wraps messages into a talking cow
+	sudo pacman -S --noconfirm fortune-mod          # fortune cookie generator
+	sudo pacman -S --noconfirm cowsay               # Wraps messages into a talking cow
 }
 
 installCommonPacmanPackages
