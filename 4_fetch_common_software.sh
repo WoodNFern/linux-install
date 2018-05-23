@@ -93,6 +93,7 @@ function installAurPackages {
     yaourt -S thunderbird-enigmail
     
     yaourt -S android-studio
+    yaourt -S icdiff					# Colorful, readable diff
 }
 
 ## Install basic software packages for everyday use
