@@ -105,6 +105,8 @@ function installCommonPacmanPackages {
 
 	# Basics
 	sudo pacman -S --noconfirm zsh
+	sudo pacman -S --noconfirm powerline
+	sudo pacman -S --noconfirm powerline-fonts
 	sudo pacman -S --noconfirm firefox
 	sudo pacman -S --noconfirm firefox-i18n-de
 	sudo pacman -S --noconfirm thunderbird
