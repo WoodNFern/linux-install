@@ -144,6 +144,7 @@ function installCommonPacmanPackages {
 	# Fun
 	sudo pacman -S --noconfirm fortune-mod          # fortune cookie generator
 	sudo pacman -S --noconfirm cowsay               # Wraps messages into a talking cow
+	sudo pacman -S --noconfirm bsd-games 		# Collection of fun utilities
 }
 
 installCommonPacmanPackages
