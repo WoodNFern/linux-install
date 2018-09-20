@@ -141,6 +141,9 @@ function installCommonPacmanPackages {
 	sudo pacman -S --noconfirm libreoffice-still
 	sudo pacman -S --noconfirm libreoffice-still-de
 
+	# Everday Life
+	sudo pacman -S --noconfirm gourmet
+
 	# Fun
 	sudo pacman -S --noconfirm fortune-mod          # fortune cookie generator
 	sudo pacman -S --noconfirm cowsay               # Wraps messages into a talking cow
